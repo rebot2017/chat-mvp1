@@ -1,5 +1,7 @@
 import json
 import shutil
+import time
+import subprocess
 import os, os.path
 class jupyter_helpers:
     def __init__(self):
@@ -29,6 +31,11 @@ class jupyter_helpers:
             scriptDir = os.path.abspath(os.path.join(parentdir, "chatscripts"))
             
             shutil.copy(filetocopy, scriptDir)
+            sleep(1)
+            print("Flushed file, commiting")
+            os.system("sudo bash /home/user/chat-mvp1/git.sh")
+            print("commiting to github")
+            
 
 
     
