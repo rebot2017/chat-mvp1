@@ -7,11 +7,10 @@ def gm_search(params):
     params = params.strip().replace(" ", "+")
     query = params
     req = "https://maps.googleapis.com/maps/api/place/textsearch/json?query="+query+"&key="+api_key
-    
+    print("request URL: %s"%(req))
     resp, content = httplib2.Http().request(req)
     content = json.loads(content.decode('utf-8'))
-    return content
-print(gm_search("capital tower"))
+    return json.dumps(content)
 if __name__=="__main__":
     argparser = argparse.ArgumentParser()
     argparser.add_argument('search',help = '', type=str, nargs='+')
