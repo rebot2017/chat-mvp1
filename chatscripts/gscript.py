@@ -18,7 +18,9 @@ if __name__=="__main__":
     search = " ".join(args.search)
     print("Fetching data for %s"%(search))
     scraped_data = gm_search(search)
-    print("Writing data to output fil")
+    print("Writing data to output file")
     with open('gscript_results.json','w') as fp:
         json.dump(scraped_data,fp,indent = 4)
-        
+        import subprocess
+subprocess.call('/home/user/chat-mvp1/git.sh', shell=True, 
+                stdout=subprocess.PIPE,stderr=subprocess.PIPE)
