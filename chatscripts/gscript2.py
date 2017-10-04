@@ -1,5 +1,4 @@
 
-import httplib2
 import argparse
 import requests
 import json
