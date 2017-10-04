@@ -10,7 +10,7 @@ def gm_search(params):
     print("request URL: %s"%(req))
     resp, content = httplib2.Http().request(req)
     content = json.loads(content.decode('utf-8'))
-    return json.dumps(content)
+    return content
 if __name__=="__main__":
     argparser = argparse.ArgumentParser()
     argparser.add_argument('search',help = '', type=str, nargs='+')
@@ -20,5 +20,5 @@ if __name__=="__main__":
     scraped_data = gm_search(search)
     print("Writing data to output fe")
     with open('gscript_results.json','w') as fp:
-        json.dump(scraped_data,fp,indent = 4)
+        json.dump(scraped_data, fp)
         
