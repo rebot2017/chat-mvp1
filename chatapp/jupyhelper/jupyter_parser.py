@@ -8,6 +8,7 @@ class jupyter_helpers:
         print("init helpers")
 
     def jupyter_parse_notebook(self, infile, outfile):
+        print("Parsing File: %s"%infile)
         with open(infile, "r") as f:
             jsonF = json.loads(f.read())
             cells = jsonF["cells"]
@@ -23,18 +24,18 @@ class jupyter_helpers:
             wfile =  open(outfile, 'w')
             wfile.write(evalStr)
             wfile.close()
+            print("file parsed and written to %s."%outfile)
             curdir = os.getcwd()
             filetocopy = os.path.abspath(os.path.join(curdir, outfile))
             parentdir = os.path.abspath(os.path.join(curdir,os.pardir))
             parentdir = os.path.abspath(os.path.join(parentdir, os.pardir))
-            print(parentdir)
             scriptDir = os.path.abspath(os.path.join(parentdir, "chatscripts"))
-            
+            print("Depositing file in %s"%scriptDir)
             shutil.copy(filetocopy, scriptDir)
-            sleep(1)
-            print("Flushed file, commiting")
+            time.sleep(1)
+            print("Flushed file, committing")
             os.system("sudo bash /home/user/chat-mvp1/git.sh")
-            print("commiting to github")
+            print("committed to github")
             
 
 
