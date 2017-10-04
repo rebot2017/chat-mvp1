@@ -1,8 +1,8 @@
 {
     "": "173.15",
-    "ticker": "AAPL",
     "1y Target Est": 173.15,
-    "url": "http://finance.yahoo.com/quote/AAPL?p=AAPL",
     "EPS (TTM)": 8.808,
-    "Earnings Date": "2017-10-23 to 2017-10-27"
+    "Earnings Date": "2017-11-02",
+    "ticker": "AAPL",
+    "url": "http://finance.yahoo.com/quote/AAPL?p=AAPL"
 }
