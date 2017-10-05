@@ -3,6 +3,8 @@ import httplib2
 import argparse
 import json
 api_key = "AIzaSyAWd44FwD80rlxc8S6CZYUdjRQw_9cjeWg"
+
+
 def gm_search(params):
     params = params.strip().replace(" ", "+")
     query = params
