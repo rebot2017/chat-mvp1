@@ -2,7 +2,8 @@ import argparse
 import requests
 import json
 API_KEY = "AIzaSyAWd44FwD80rlxc8S6CZYUdjRQw_9cjeWg"
-def gm_search(params):    request_string = "https://maps.googleapis.com/maps/api/place/textsearch/json?query={0}&key={1}"
+def gm_search(params):def gm_search(params):
+    request_string = "https://maps.googleapis.com/maps/api/place/textsearch/json?query={0}&key={1}"
     query = params.strip().replace(" ", "+")
     req = request_string%(query, API_KEY)
     print(req)
