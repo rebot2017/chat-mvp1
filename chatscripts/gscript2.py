@@ -13,7 +13,7 @@ import jsonAPI_KEY = "AIzaSyAWd44FwD80rlxc8S6CZYUdjRQw_9cjeWg"def gm_search(para
     search = " ".join(args.search)
     print("Fetching data for %s"%(search))
     data = gm_search(search)
-    print("Writing data to output fe")
+    print("Writing data to output file")
     with open('gscript_results.json','w') as fp:
         json.dump(data, fp)
         
