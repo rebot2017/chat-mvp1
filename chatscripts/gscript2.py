@@ -5,7 +5,7 @@ API_KEY = "AIzaSyAWd44FwD80rlxc8S6CZYUdjRQw_9cjeWg"
 def gm_search(params):
     query = params.strip().replace(" ", "+")
     request_string = "https://maps.googleapis.com/maps/api/place/textsearch/json?query="+query+"&key="+API_KEY
-    print("request URL: %s"%(req))
+    print("request URL: %s"%(request_string))
     resp = requests.get(req)
     content = json.loads(resp.text)
     return content
