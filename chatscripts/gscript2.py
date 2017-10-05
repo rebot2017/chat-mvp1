@@ -6,7 +6,8 @@ import jsonAPI_KEY = "AIzaSyAWd44FwD80rlxc8S6CZYUdjRQw_9cjeWg"def gm_search(para
     print("request URL: %s"%(req))
     resp = requests.get(req)
     content = json.loads(resp.text)
-    return contentif __name__=="__main__":
+    return content
+if __name__=="__main__":
     argparser = argparse.ArgumentParser()
     argparser.add_argument('search',help = '', type=str, nargs='+')
     args = argparser.parse_args()
