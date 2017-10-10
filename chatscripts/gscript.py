@@ -14,7 +14,9 @@ def gm_search(params):
     for place in places:
         place_name = place['name']
         place_address = place['formatted_address']
-        photo_request_url = MAPS_PHOTO_URL%(place['photos'][0]['photo_reference'], API_KEY)
+        photo_request_url = ""
+        if 'photos' in place:
+            photo_request_url = MAPS_PHOTO_URL%(place['photos'][0]['photo_reference'], API_KEY)
         desc = "Address: " + place_address
         result_objs.append({'img': photo_request_url, 'title': place_name, 'description': desc})
     print(json.dumps(result_objs, indent=4))
