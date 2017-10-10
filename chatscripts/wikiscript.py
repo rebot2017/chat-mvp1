@@ -16,7 +16,7 @@ def wiki_search(query):
         
         soup = BeautifulSoup(result.text, 'html.parser')
         first_paragraph = soup.find(attrs={'class': 'mw-parser-output'}).p.get_text()
-        result_object = {'title': title, 'description': first_paragraph, "URL": search_request_url}
+        result_object = {'title': title, 'description': first_paragraph, "URL": article_request_url}
         return result_object
     else:
         result_object = {'title': 'No match found on Wikipedia!', 'description': "", 'URL':""}
