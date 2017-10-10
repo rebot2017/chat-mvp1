@@ -13,13 +13,22 @@ def wiki_search(query):
         title = result_list[0]['title']
         article_request_url = "https://en.wikipedia.org/wiki/%s"%(title.replace(" ", "_"))
         result = requests.get(article_request_url)
+        
         soup = BeautifulSoup(result.text, 'html.parser')
         first_paragraph = soup.find(attrs={'class': 'mw-parser-output'}).p.get_text()
-        result_object = {'title': title, 'description': first_paragraph}
-        print(json.dumps(result_object))
+        result_object = {'title': title, 'description': first_paragraph, "URL": search_request_url}
+        return result_object
+    else:
+        result_object = {'title': 'No match found on Wikipedia!', 'description': "", 'URL':""}
+        return result_object
 if __name__=="__main__":
     argparser = argparse.ArgumentParser()
     argparser.add_argument('title',help = '', type=str, nargs='+')
     args = argparser.parse_args()
     title = " ".join(args.title)
-    wiki_search(title)
+    result = wiki_search(title)
+    print("Title: %s"%(result.title))
+    if result.description:
+        print("Article: %s"%(result.description))
+    if result.URL:    
+        print("Read more: %s"%(result.URL))
