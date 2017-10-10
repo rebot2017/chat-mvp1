@@ -26,11 +26,10 @@ def bookdepo_search(query):
         desc = book_title +"\n Author: " + book_author + "\nPublished: " + book_published_date + "\nFormat: " + book_format
         price = result_divs[i].find("p", class_="price").text.strip()
         result_obj.append({'img': imglink,  'description': desc, 'price':price})
-
-    print(json.dumps(result_obj))
+    return result_obj
 if __name__=="__main__":
     argparser = argparse.ArgumentParser()
     argparser.add_argument('title',help = '', type=str, nargs='+')
     args = argparser.parse_args()
     title = " ".join(args.title)
-    bookdepo_search(title)
+    print(json.dumps(bookdepo_search(title)))
