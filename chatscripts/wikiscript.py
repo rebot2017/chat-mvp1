@@ -34,7 +34,7 @@ if __name__=="__main__":
     result = wiki_search(title)
     output = "Title: %s"%(result['title']) + "\n"
     if 'description' in result:
-        output += "Article: %s"%(strip_special_char(result['description'].encode("ASCII", "ignore"))) + "\n"
+        output += "Article: %s"%(result['description'].encode("ASCII", "ignore")) + "\n"
     if 'URL' in result:    
         output += "Read more: %s"%(result['URL']) + "\n"
     print(output)
