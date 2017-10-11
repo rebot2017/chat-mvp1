@@ -21,6 +21,11 @@ def wiki_search(query):
     else:
         result_object = {'title': 'No match found on Wikipedia!', 'description': "", 'URL':""}
         return result_object
+def strip_special_char(text):
+    startIndex = text.find("(")
+    endIndex = text.find(")")
+    return text[0:startIndex] + text[endIndex+1:]
+
 if __name__=="__main__":
     argparser = argparse.ArgumentParser()
     argparser.add_argument('title',help = '', type=str, nargs='+')
@@ -29,12 +34,8 @@ if __name__=="__main__":
     result = wiki_search(title)
     output = "Title: %s"%(result['title']) + "\n"
     if 'description' in result:
-        output += "Article: %s"%(strip_special_char(result['description'])) + "\n"
+        output += "Article: %s"%(strip_special_char(result['description'].encode("ASCII", "ignore"))) + "\n"
     if 'URL' in result:    
         output += "Read more: %s"%(result['URL']) + "\n"
     print(output)
     
-def strip_special_char(text):
-    startIndex = text.find("(")
-    endIndex = text.find(")")
-    return text[0:startIndex] + text[endIndex+1:]
