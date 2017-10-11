@@ -29,7 +29,12 @@ if __name__=="__main__":
     result = wiki_search(title)
     output = "Title: %s"%(result['title']) + "\n"
     if 'description' in result:
-        output += "Article: %s"%(result['description']) + "\n"
+        output += "Article: %s"%(strip_special_char(result['description'])) + "\n"
     if 'URL' in result:    
         output += "Read more: %s"%(result['URL']) + "\n"
     print(output)
+    
+def strip_special_char(text):
+    startIndex = text.find("(")
+    endIndex = text.find(")")
+    return text[0:startIndex] + text[endIndex+1:]
