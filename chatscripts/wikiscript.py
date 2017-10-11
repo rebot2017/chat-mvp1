@@ -27,8 +27,9 @@ if __name__=="__main__":
     args = argparser.parse_args()
     title = " ".join(args.title)
     result = wiki_search(title)
-    print("Title: %s"%(result['title']))
+    output = "Title: %s"%(result['title']) + "\n"
     if 'description' in result:
-        print("Article: %s"%(result['description']))
+        output += "Article: %s"%(result['description']) + "\n"
     if 'URL' in result:    
-        print("Read more: %s"%(result['URL']))
+        output += "Read more: %s"%(result['URL']) + "\n"
+    print(output)
