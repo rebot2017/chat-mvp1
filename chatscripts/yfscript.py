@@ -1,11 +1,3 @@
-
-import sys
-if "/home/user/chat-mvp1/chatapp" not in sys.path:
-	sys.path.append("/home/user/chat-mvp1/chatapp")
-
-import sys
-if "/home/user/chat-mvp1/chatapp" not in sys.path:
-	sys.path.append("/home/user/chat-mvp1/chatapp")
 from lxml import html  
 import requests
 from time import sleep
@@ -45,3 +37,5 @@ if __name__=="__main__":
     args = argparser.parse_args()
     ticker = args.ticker
     print(json.dumps(get_ticker_data(ticker))
+
+
