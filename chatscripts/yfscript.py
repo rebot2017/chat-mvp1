@@ -37,5 +37,5 @@ if __name__=="__main__":
     args = argparser.parse_args()
     ticker = args.ticker
     #print(json.dumps(get_ticker_data(ticker)))
-    print("hello \n world")
+    print("hello <BR> world")
 
