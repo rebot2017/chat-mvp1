@@ -6,8 +6,8 @@ MAPS_BASIC_URL = "https://maps.googleapis.com/maps/api/place/textsearch/json?que
 MAPS_PHOTO_URL = "https://maps.googleapis.com/maps/api/place/photo?photoreference=%s&maxheight=400&key=%s"
 def gm_search(params):
     query = params.strip().replace(" ", "+")
-    request_string = MAPS_BASIC_URL%(query,API_KEY)
-    resp = requests.get(request_string)
+    request_str = MAPS_BASIC_URL%(query,API_KEY)
+    resp = requests.get(request_str)
     places = json.loads(resp.text)['results']
     
     result_objs = []
@@ -20,6 +20,11 @@ def gm_search(params):
         desc = "Address: " + place_address
         result_objs.append({'img': photo_request_url, 'title': place_name, 'description': desc})
     return result_objs
+
+# import sys
+# sys.path.append("/home/user/chat-mvp1/chatapp")
+import os 
+dir_path = os.path.dirname(os.path.realpath(__file__))
 if __name__=="__main__":
     argparser = argparse.ArgumentParser()
     argparser.add_argument('search',help = '', type=str, nargs='+')
