@@ -28,6 +28,10 @@ class jupyter_helpers:
                             evalStr+=line
                             if not line.endswith('\n'):
                                 evalStr+='\n'
+            with open("append.txt", 'r') as f:
+                lines = f.readlines()
+                for line in lines:
+                    evalStr += line
             wfile =  open(outfile, 'w')
             wfile.write(evalStr)
             wfile.close()

@@ -1,0 +1,14 @@
+if __name__=="__main__":
+    argparser = argparse.ArgumentParser()
+    argparser.add_argument('title',help = '', type=str, nargs='+')
+    args = argparser.parse_args()
+    title = " ".join(args.title)
+    result = wiki_search(title)
+    output = "Title: %s"%(result['title']) + "\n"
+    if 'description' in result:
+        output += "Article: %s"%(result['description'].encode("ASCII", "ignore")) + "\n"
+    if 'URL' in result:    
+        output += "Read more: %s"%(result['URL']) + "\n"
+    print(output)
+
+    

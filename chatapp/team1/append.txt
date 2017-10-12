@@ -1,0 +1,6 @@
+if __name__=="__main__":
+    argparser = argparse.ArgumentParser()
+    argparser.add_argument('search',help = '', type=str, nargs='+')
+    args = argparser.parse_args()
+    search = " ".join(args.search)
+    print(json.dumps(gm_search(search), indent=4))

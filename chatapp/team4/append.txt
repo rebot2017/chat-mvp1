@@ -1,0 +1,6 @@
+if __name__=="__main__":
+    argparser = argparse.ArgumentParser()
+    argparser.add_argument('title',help = '', type=str, nargs='+')
+    args = argparser.parse_args()
+    title = " ".join(args.title)
+    print(json.dumps(bookdepo_search(title)))

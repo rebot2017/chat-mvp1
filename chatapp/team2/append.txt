@@ -1,0 +1,6 @@
+if __name__=="__main__":
+    argparser = argparse.ArgumentParser()
+    argparser.add_argument('ticker',help = '')
+    args = argparser.parse_args()
+    ticker = args.ticker
+    print(json.dumps(get_ticker_data(ticker))
