@@ -38,4 +38,6 @@ if __name__=="__main__":
     ticker = args.ticker
     #print(json.dumps(get_ticker_data(ticker)))
     print("hello <BR> world")
+    print("hello ")
+    print("bbbb orld")
 
