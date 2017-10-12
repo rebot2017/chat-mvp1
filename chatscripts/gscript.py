@@ -1,7 +1,3 @@
-
-import sys
-if "/home/user/chat-mvp1/chatapp" not in sys.path:
-	sys.path.append("/home/user/chat-mvp1/chatapp")
 import argparse
 import requests
 import json
@@ -24,6 +20,7 @@ def gm_search(params):
         desc = "Address: " + place_address
         result_objs.append({'img': photo_request_url, 'title': place_name, 'description': desc})
     return result_objs
+gm_search("capital tower singapore")
 if __name__=="__main__":
     argparser = argparse.ArgumentParser()
     argparser.add_argument('search',help = '', type=str, nargs='+')
