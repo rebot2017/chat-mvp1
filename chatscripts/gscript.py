@@ -6,8 +6,8 @@ MAPS_BASIC_URL = "https://maps.googleapis.com/maps/api/place/textsearch/json?que
 MAPS_PHOTO_URL = "https://maps.googleapis.com/maps/api/place/photo?photoreference=%s&maxheight=400&key=%s"
 def gm_search(params):
     query = params.strip().replace(" ", "+")
-    request_str = MAPS_BASIC_URL%(query,API_KEY)
-    resp = requests.get(request_str)
+    request_string = MAPS_BASIC_URL%(query,API_KEY)
+    resp = requests.get(request_string)
     places = json.loads(resp.text)['results']
     
     result_objs = []
