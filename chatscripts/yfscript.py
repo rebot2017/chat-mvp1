@@ -1,36 +1,45 @@
-from lxml import html  
+# Some of the libraries we need to construct
 import requests
+from bs4 import BeautifulSoup
 from time import sleep
 import json
 import argparse
 from collections import OrderedDict
 from time import sleep
-def get_ticker_data(ticker):
-    url = "http://finance.yahoo.com/quote/%s?p=%s"%(ticker,ticker)
+def construct_url(ticker):
+    base_url = "http://finance.yahoo.com/quote/{0}?p={0}"
+    url = base_url.replace("{0}", ticker)
+    return url
+def retrieve_website(url):
     response = requests.get(url)
-    sleep(4)
-    parser = html.fromstring(response.text)
-    summary_table = parser.xpath('//div[contains(@data-test,"summary-table")]//tr')
-    summary_data = OrderedDict()
-    other_details_json_link = "https://query2.finance.yahoo.com/v10/finance/quoteSummary/{0}?formatted=true&lang=en-US&region=US&modules=summaryProfile%2CfinancialData%2CrecommendationTrend%2CupgradeDowngradeHistory%2Cearnings%2CdefaultKeyStatistics%2CcalendarEvents&corsDomain=finance.yahoo.com".format(ticker)
-    summary_json_response = requests.get(other_details_json_link)
-    json_loaded_summary =  json.loads(summary_json_response.text)
-    y_Target_Est = json_loaded_summary["quoteSummary"]["result"][0]["financialData"]["targetMeanPrice"]['raw']
-    earnings_list = json_loaded_summary["quoteSummary"]["result"][0]["calendarEvents"]['earnings']
-    eps = json_loaded_summary["quoteSummary"]["result"][0]["defaultKeyStatistics"]["trailingEps"]['raw']
-    datelist = []
-    for i in earnings_list['earningsDate']:
-        datelist.append(i['fmt'])
-    earnings_date = ' to '.join(datelist)
-    for table_data in summary_table:
-        raw_table_key = table_data.xpath('.//td[@class="C(black)"]//text()')
-        raw_table_value = table_data.xpath('.//td[contains(@class,"Ta(end)")]//text()')
-        table_key = ''.join(raw_table_key).strip()
-        table_value = ''.join(raw_table_value).strip()
-        summary_data.update({table_key:table_value})
-    summary_data.update({'1y Target Est':y_Target_Est,'EPS (TTM)':eps,'Earnings Date':earnings_date,'ticker':ticker,'url':url})
+    html = response.text
+    parsed_html = BeautifulSoup(html, 'html.parser')
+    return parsed_html
+def get_information(ticker, url, website):
+    
+    ticker_price = website.find("span", class_="Fz(36px)").getText()
+######## Add in your webscrapping code here to scrape more information #############
+    
+    
+    
+####################################################################################
+######## Remember to add the information to the summary_data object below ##########
+    summary_data = {
+        'ticker': ticker,
+        'ticker_price': ticker_price,
+        'url': url     
+    }
     return summary_data
-#print(json.dumps(get_ticker_data("AAPL")))
+def get_ticker_data(ticker):
+    
+    url = construct_url(ticker)
+    website = retrieve_website(url)
+
+    summary_data = get_information(ticker, url, website)
+    
+    return summary_data
+
+
 if __name__=="__main__":
     argparser = argparse.ArgumentParser()
     argparser.add_argument('ticker',help = '')
