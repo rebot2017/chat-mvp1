@@ -30,7 +30,7 @@ def get_ticker_data(ticker):
         summary_data.update({table_key:table_value})
     summary_data.update({'1y Target Est':y_Target_Est,'EPS (TTM)':eps,'Earnings Date':earnings_date,'ticker':ticker,'url':url})
     return summary_data
-print(json.dumps(get_ticker_data("AAPL"))
+print(json.dumps(get_ticker_data("AAPL")))
 if __name__=="__main__":
     argparser = argparse.ArgumentParser()
     argparser.add_argument('ticker',help = '')
