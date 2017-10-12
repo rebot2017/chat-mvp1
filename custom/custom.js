@@ -33,7 +33,7 @@ var commit_cell = function(code){
     cell.execute()
 console.log(cell);
 console.log("executed, deleting cell")
-$(cell.events).one('finished_execute.CodeCell', function(){Jupyter.notebook.delete_cell(0);});
+$(cell.events).one('finished_execute.CodeCell', function(){setTimeout(function(){Jupyter.notebook.delete_cell(0);},3000);});
 }
 
 if($(IPython.toolbar.selector.concat(' > #commit-to-git')).length == 0){
@@ -47,8 +47,8 @@ if($(IPython.toolbar.selector.concat(' > #commit-to-git')).length == 0){
                 commit_cell(
 `
 import sys
-if "home/user/chat-mvp1/chatapp" not in sys.path:
-	sys.path.append("home/user/chat-mvp1/chatapp")
+if "/home/user/chat-mvp1/chatapp" not in sys.path:
+	sys.path.append("/home/user/chat-mvp1/chatapp")
 from jupyhelper import jupyter_parser 
 jp = jupyter_parser.jupyter_helpers()
 jp.jupyter_run("{0}", "{1}")
