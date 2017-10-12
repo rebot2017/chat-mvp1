@@ -58,3 +58,7 @@ jp.jupyter_run("{0}", "{1}")
         }
     ], 'commit-to-git');
 }
+
+var hidePrompt = function(){$(".input_prompt").hide();}
+hidePrompt();
+$(Jupyter.events).one("create.Cell", function(){hidePrompt();});
