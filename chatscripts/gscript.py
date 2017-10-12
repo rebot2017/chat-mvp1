@@ -20,7 +20,6 @@ def gm_search(params):
         desc = "Address: " + place_address
         result_objs.append({'img': photo_request_url, 'title': place_name, 'description': desc})
     return result_objs
-gm_search("capital tower singapore")
 if __name__=="__main__":
     argparser = argparse.ArgumentParser()
     argparser.add_argument('search',help = '', type=str, nargs='+')
