@@ -20,6 +20,7 @@ def wiki_search(query):
         return result_object
     else:
         result_object = {'title': 'No match found on Wikipedia!', 'description': "", 'URL':""}
+    result_object ={'title': 'No match found on Wikipedia!', 'description': "Test Test", 'URL':""}
         return result_object
 if __name__=="__main__":
     argparser = argparse.ArgumentParser()
