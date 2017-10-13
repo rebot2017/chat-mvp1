@@ -1,7 +1,6 @@
 import requests
 import json
 from bs4 import BeautifulSoup
-import argparse
 def bookdepo_search(query):
     
     headers = {
@@ -27,6 +26,8 @@ def bookdepo_search(query):
         price = result_divs[i].find("p", class_="price").text.strip()
         result_obj.append({'img': imglink,  'description': desc, 'price':price})
     return result_obj
+import argparse
+
 if __name__=="__main__":
     argparser = argparse.ArgumentParser()
     argparser.add_argument('title',help = '', type=str, nargs='+')
