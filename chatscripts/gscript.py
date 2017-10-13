@@ -19,7 +19,7 @@ def gm_search(params):
             photo_request_url = MAPS_PHOTO_URL%(place['photos'][0]['photo_reference'], API_KEY)
         desc = "Address: " + place_address
         result_objs.append({'img': photo_request_url, 'title': place_name, 'description': desc})
-    result_objs = {"something": "else"}
+#     result_objs = {"something": "else"}
     return result_objs
 import argparse
 
