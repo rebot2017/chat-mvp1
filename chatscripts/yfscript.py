@@ -1,4 +1,4 @@
-# Some of the libraries we need to construct
+# Some of the libraries we need
 import requests
 from bs4 import BeautifulSoup
 from time import sleep
