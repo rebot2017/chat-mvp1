@@ -5,7 +5,7 @@ import subprocess
 import os, os.path
 class jupyter_helpers:
     def __init__(self):
-        print("init helpers")
+        print("Starting the committing process. Please wait.")
 
     def jupyter_run(self, infile, outfile):
         self.jupyter_parse_notebook(infile, outfile)

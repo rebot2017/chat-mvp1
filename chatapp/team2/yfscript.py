@@ -1,11 +1,7 @@
-# Some of the libraries we need to construct
+# Some of the libraries we need
 import requests
 from bs4 import BeautifulSoup
-from time import sleep
 import json
-import argparse
-from collections import OrderedDict
-from time import sleep
 def construct_url(ticker):
     base_url = "http://finance.yahoo.com/quote/{0}?p={0}"
     url = base_url.replace("{0}", ticker)
@@ -40,13 +36,11 @@ def get_ticker_data(ticker):
     return summary_data
 
 
+import argparse
+
 if __name__=="__main__":
     argparser = argparse.ArgumentParser()
     argparser.add_argument('ticker',help = '')
     args = argparser.parse_args()
     ticker = args.ticker
-    #print(json.dumps(get_ticker_data(ticker)))
-    print("hello <BR> world")
-    print("hello ")
-    print("bbbb orld")
-
+    print(json.dumps(get_ticker_data(ticker)))
