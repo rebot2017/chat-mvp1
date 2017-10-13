@@ -43,8 +43,4 @@ if __name__=="__main__":
     argparser.add_argument('ticker',help = '')
     args = argparser.parse_args()
     ticker = args.ticker
-    #print(json.dumps(get_ticker_data(ticker)))
-    print("hello <BR> world")
-    print("hello ")
-    print("bbbb orld")
-
+    print(json.dumps(get_ticker_data(ticker)))
