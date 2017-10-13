@@ -15,7 +15,7 @@ def get_information(ticker, url, website):
     
     ticker_price = website.find("span", class_="Fz(36px)").getText()
 ######## Add in your webscrapping code here to scrape more information #############
-    
+
     
     
 ####################################################################################
@@ -23,7 +23,7 @@ def get_information(ticker, url, website):
     summary_data = {
         'ticker': ticker,
         'ticker_price': ticker_price,
-        'url': url     
+        'url': url
     }
     return summary_data
 def get_ticker_data(ticker):
