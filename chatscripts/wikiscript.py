@@ -19,7 +19,6 @@ def wiki_search(query):
         return result_object
     else:
         result_object = {'title': 'No match found on Wikipedia!', 'description': "", 'URL':""}
-    result_object ="asdasdsad"
         return result_object
 import argparse
 
