@@ -22,7 +22,7 @@ class jupyter_helpers:
                 if cell["cell_type"] == "code":
                     code = cell["source"]
                     for line in code:
-                        if line.find("jupyter_") >= 0:
+                        if line.find("jupyter_") >= 0 or line.find("j_ignore_") >= 0:
                             continue
                         else:
                             evalStr+=line
