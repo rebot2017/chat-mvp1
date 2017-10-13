@@ -1,7 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
 import json
-import argparse
 def wiki_search(query):
     query = query.strip().replace(" ", "%20")
     search_request_url = "https://en.wikipedia.org/w/api.php?action=query&list=search&srwhat=nearmatch&srsearch=%s&format=json&utf8="%(query)
@@ -22,6 +21,8 @@ def wiki_search(query):
         result_object = {'title': 'No match found on Wikipedia!', 'description': "", 'URL':""}
     result_object ="asdasdsad"
         return result_object
+import argparse
+
 if __name__=="__main__":
     argparser = argparse.ArgumentParser()
     argparser.add_argument('title',help = '', type=str, nargs='+')
