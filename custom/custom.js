@@ -45,14 +45,13 @@ if($(IPython.toolbar.selector.concat(' > #commit-to-git')).length == 0){
 		console.log("update3");
                 console.log("update1");
                 commit_cell(
-`
-import sys
-if "/home/user/chat-mvp1/chatapp" not in sys.path:
-	sys.path.append("/home/user/chat-mvp1/chatapp")
-from jupyhelper import jupyter_parser 
-jp = jupyter_parser.jupyter_helpers()
-jp.jupyter_run("{0}", "{1}")
-`
+
+"import sys\n" +
+"if '/home/user/chat-mvp1/chatapp' not in sys.path:\n" +
+"	sys.path.append('/home/user/chat-mvp1/chatapp')\n" +
+"from jupyhelper import jupyter_parser\n" + 
+"jp = jupyter_parser.jupyter_helpers()\n" +
+"jp.jupyter_run('{0}', '{1}')\n"
 )
              }
         }
