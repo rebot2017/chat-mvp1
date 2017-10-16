@@ -1,6 +1,9 @@
 import sys
 if '/home/user/chat-mvp1/chatapp' not in sys.path:
 	sys.path.append('/home/user/chat-mvp1/chatapp')
+import sys
+if '/home/user/chat-mvp1/chatapp' not in sys.path:
+	sys.path.append('/home/user/chat-mvp1/chatapp')
 import argparse
 import requests
 import json
