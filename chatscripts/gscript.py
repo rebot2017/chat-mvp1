@@ -1,3 +1,6 @@
+import sys
+if '/home/user/chat-mvp1/chatapp' not in sys.path:
+	sys.path.append('/home/user/chat-mvp1/chatapp')
 import argparse
 import requests
 import json
@@ -37,7 +40,6 @@ def gm_search(params):
                             ''
                            })
     return result_objs
-gm_search("七宝万科广场")
 import argparse
 
 if __name__=="__main__":
