@@ -59,6 +59,6 @@ jp.jupyter_run("{0}", "{1}")
     ], 'commit-to-git');
 }
 
-var hidePrompt = function(){$(".input_prompt").hide();}
-hidePrompt();
+var hidePrompt = function(){$(".input_prompt").hide(); console.log($(".input_prompt")); console.log("hideinput");}
+$(Jupyter.events).one("kernel_ready.Kernel",hidePrompt);
 $(Jupyter.events).one("create.Cell", function(){hidePrompt();});
