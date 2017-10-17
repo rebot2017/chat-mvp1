@@ -32,11 +32,15 @@ def get_places(places_json):
     return places_object
 def gm_search(search_query):
     url = add_query_to_url(search_query)
+    
     response = retrieve_data_from_api(url)
+    
     response_json = get_json_from_str(response)
+    
     places = get_places(response_json['results'])
+    
     return places
-print(gm_search("merlion"))
+
     
 import argparse
 def call_api(search):
