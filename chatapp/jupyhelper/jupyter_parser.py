@@ -10,7 +10,7 @@ class jupyter_helpers:
     def jupyter_run(self, infile, outfile):
         self.jupyter_parse_notebook(infile, outfile)
         self.jupyter_copy_script(outfile)
-        self.jupyter_commit()
+       # self.jupyter_commit()
     
     def jupyter_parse_notebook(self, infile, outfile):
         print("Parsing File: %s"%infile)

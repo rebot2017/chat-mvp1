@@ -15,24 +15,35 @@ def wiki_search(query):
         
         soup = BeautifulSoup(result.text, 'html.parser')
         first_paragraph = soup.find(attrs={'class': 'mw-parser-output'}).p.get_text()
-        result_object = {'title': title, 'description': first_paragraph, "URL": article_request_url}
+        result_object = {'title': title, 'description': first_paragraph, "url": article_request_url}
         return result_object
     else:
-        result_object = {'title': 'No match found on Wikipedia!', 'description': "", 'URL':""}
+        result_object = {'title': 'No match found on Wikipedia!', 'description': "", 'url':""}
         return result_object
 import argparse
+
+def parse_result(result):
+    str = "Title: " + result['title'] + "\n"
+    str+= "description: " + result['description'] + "\n"
+    str+= "read more: " + result['url'] + "\n"
+    return str
+
+def call_api(title):
+    result = wiki_search(title)
+    card1 = {"type": "string", "data": "Searching wikipedia for %s"%title }
+    card2 = {"type": "string", "data": parse_result(result)}
+    return_arr = []
+    return_arr.append(card1)
+    return_arr.append(card2)
+    return return_arr
 
 if __name__=="__main__":
     argparser = argparse.ArgumentParser()
     argparser.add_argument('title',help = '', type=str, nargs='+')
     args = argparser.parse_args()
     title = " ".join(args.title)
-    result = wiki_search(title)
-    output = "Title: %s"%(result['title']) + "\n"
-    if 'description' in result:
-        output += "Article: %s"%(result['description'].encode("ASCII", "ignore")) + "\n"
-    if 'URL' in result:    
-        output += "Read more: %s"%(result['URL']) + "\n"
-    print(output)
+    print(json.dumps(call_api(title)))
+
+
 
     

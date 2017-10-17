@@ -21,12 +21,23 @@ def bookdepo_search(query):
         book_author = result_divs[i].find("p", class_="author").getText().strip()
         book_published_date = result_divs[i].find("p", class_="published").getText().strip()
         book_format = result_divs[i].find("p", class_="format").getText().strip()
-        
-        desc = book_title +"\n Author: " + book_author + "\nPublished: " + book_published_date + "\nFormat: " + book_format
-        price = result_divs[i].find("p", class_="price").text.strip()
-        result_obj.append({'img': imglink,  'description': desc, 'price':price})
+       
+        price = result_divs[i].find("p", class_="price").next_element.strip()
+
+        desc = "\n Author: " + book_author + "\nPublished: " + book_published_date + "\nFormat: " + book_format + "\nPrice: "+ price
+        result_obj.append({'title': book_title, 'img': imglink,  'description': desc })
     return result_obj
 import argparse
+
+
+def call_api(title):
+    result = bookdepo_search(title)
+    card1 = {"type": "string", "data": "Searching on BookDepository.com for %s"%title}
+    card2 = {"type": "cards", "data": result}
+    return_arr = []
+    return_arr.append(card1)
+    return_arr.append(card2)
+    return return_arr
 
 if __name__=="__main__":
     argparser = argparse.ArgumentParser()

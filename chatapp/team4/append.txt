@@ -1,5 +1,15 @@
 import argparse
 
+
+def call_api(title):
+    result = bookdepo_search(title)
+    card1 = {"type": "string", "data": "Searching on BookDepository.com for %s"%title}
+    card2 = {"type": "cards", "data": result}
+    return_arr = []
+    return_arr.append(card1)
+    return_arr.append(card2)
+    return return_arr
+
 if __name__=="__main__":
     argparser = argparse.ArgumentParser()
     argparser.add_argument('title',help = '', type=str, nargs='+')
