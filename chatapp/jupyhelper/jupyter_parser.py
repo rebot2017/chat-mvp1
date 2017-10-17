@@ -19,7 +19,7 @@ class jupyter_helpers:
             cells = jsonF["cells"]
             evalStr = ""
             for cell in cells:
-                if cell["cell_type"] == "code":
+                if cell["cell_type"] == "code" and "j_ignore" not in cell["metadata"]:
                     code = cell["source"]
                     for line in code:
                         if line.find("jupyter_") >= 0 or line.find("j_ignore_") >= 0:

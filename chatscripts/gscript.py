@@ -11,9 +11,6 @@ def add_query_to_url(search_query):
 def retrieve_data_from_api(url):
     response = requests.get(url) #calling the API endpoint
     return response.text #extracting the results from the response object
-request_url = add_query_to_url("universal studios singapore")
-api_response = retrieve_data_from_api(request_url)
-print(api_response)
 def get_json_from_str(json_string):
     return json.loads(json_string)
 def extract_relevant_attributes(place_json):
