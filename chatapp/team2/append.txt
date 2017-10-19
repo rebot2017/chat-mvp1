@@ -1,24 +1,17 @@
 import argparse
-import json
-
-def parse_result(result):
-    str = "Ticker: " + result['ticker'] + "\n"
-    str += "Ticker Price: " + result['ticker_price'] + "\n"
-    str += "more info: " + result['url'] + "\n"
-    return str
-    
-def call_api(ticker):
-    results = get_ticker_data(ticker)
-    card1 = {"type": "string", "data": "getting results for %s"%ticker}
-    card2 = {"type":"string", "data": parse_result(results)}
+def call_api(search):
+    search_res = gm_search(search)
+    card1 = {"type":"string", "data":"Search results from Google: "}
+    card2 = {"type":"cards", "data": search_res}
     return_arr = []
     return_arr.append(card1)
     return_arr.append(card2)
     return return_arr
-
+    
 if __name__=="__main__":
     argparser = argparse.ArgumentParser()
-    argparser.add_argument('ticker',help = '')
+    argparser.add_argument('search',help = '', type=str, nargs='+')
     args = argparser.parse_args()
-    ticker = args.ticker
-    print(json.dumps(call_api(ticker)))
+    search = " ".join(args.search)
+    print(json.dumps(call_api(search)))
+    
