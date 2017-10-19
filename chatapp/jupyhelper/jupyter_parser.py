@@ -39,9 +39,7 @@ class jupyter_helpers:
             
     
     def jupyter_copy_script(self, outfile):
-        curdir = os.getcwd()
-        folders = curdir.split('/')
-        team_num = folders[len(folders)-1]
+        team_num = self.get_curr_folder()
         filetocopy = os.path.abspath(os.path.join(curdir, outfile))
         parentdir = os.path.abspath(os.path.join(curdir,os.pardir))
         parentdir = os.path.abspath(os.path.join(parentdir, os.pardir))
@@ -50,10 +48,18 @@ class jupyter_helpers:
         shutil.copy(filetocopy, scriptDir+"/%s_"%team_num+outfile)
         print("Copied File")
     
+    def get_curr_folder(self):
+        curdir = os.getcwd()
+        folders = curdir.split('/')
+        team_num = folders[len(folders)-1]
+        return team_num
+
+
     def jupyter_commit(self):
         time.sleep(1)
         print("committing...")
-        os.system("bash /home/user/chat-mvp1/git.sh")
+        team_num = self.get_curr_folder()
+        os.system("bash /home/user/chat-mvp1/git.sh "+team_num)
         print("committed to github")
     
     def jupyter_deploy(self, infile, outfile, argument=""):
