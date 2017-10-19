@@ -40,12 +40,14 @@ class jupyter_helpers:
     
     def jupyter_copy_script(self, outfile):
         curdir = os.getcwd()
+        folders = curdir.split('/')
+        team_num = folders[len(folders)-1]
         filetocopy = os.path.abspath(os.path.join(curdir, outfile))
         parentdir = os.path.abspath(os.path.join(curdir,os.pardir))
         parentdir = os.path.abspath(os.path.join(parentdir, os.pardir))
         scriptDir = os.path.abspath(os.path.join(parentdir, "chatscripts"))
         print("Depositing file in %s"%scriptDir)
-        shutil.copy(filetocopy, scriptDir)
+        shutil.copy(filetocopy, scriptDir+"/%s_"%team_num+outfile)
         print("Copied File")
     
     def jupyter_commit(self):
