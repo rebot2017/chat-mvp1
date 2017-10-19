@@ -40,6 +40,7 @@ class jupyter_helpers:
     
     def jupyter_copy_script(self, outfile):
         team_num = self.get_curr_folder()
+        curdir=os.getcwd()
         filetocopy = os.path.abspath(os.path.join(curdir, outfile))
         parentdir = os.path.abspath(os.path.join(curdir,os.pardir))
         parentdir = os.path.abspath(os.path.join(parentdir, os.pardir))
