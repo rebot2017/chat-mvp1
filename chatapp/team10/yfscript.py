@@ -26,6 +26,7 @@ def get_information(ticker, url, website):
         'ticker_price': ticker_price,
         'url': url
     }
+    
     return summary_data
 def get_ticker_data(ticker):
     
