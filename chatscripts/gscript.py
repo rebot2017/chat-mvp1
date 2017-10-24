@@ -16,11 +16,21 @@ def get_json_from_str(json_string):
 def extract_relevant_attributes(place_json):
     place_object = dict()
     place_object["title"] = place_json["name"]
-    place_object["description"] = "address: " + place_json["formatted_address"]
     if 'photos' in place_json:
         place_object['img'] = MAPS_PHOTO_URL%(place_json['photos'][0]['photo_reference'], API_KEY)
     else:
         place_object['img'] = ""
+        
+    ## place_object is a container for what we want to provide to the chatbot.
+    ## Looking at the json google returned, what other attributes do you think are relevant? 
+    ## Put what you think are relevant in a string, and set it as `description` attribute of the place_object
+    ## i.e. place_object['description'] = ....
+    ##############################################################
+    ################### Your code here ###########################
+    
+    
+    
+    ##############################################################
     return place_object
 def get_places(places_json):
     places_object = []
@@ -55,4 +65,5 @@ if __name__=="__main__":
     args = argparser.parse_args()
     search = " ".join(args.search)
     print(json.dumps(call_api(search)))
+
     
