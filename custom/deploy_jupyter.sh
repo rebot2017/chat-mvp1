@@ -10,7 +10,7 @@ apt install -y python3
 apt install -y python3-pip
 apt install -y whois
 pip3 install jupyterhub
-apt-get install npm nodejs-legacy
+apt-get install -y npm nodejs-legacy
 npm install -g configurable-http-proxy
 pip3 install notebook
 
