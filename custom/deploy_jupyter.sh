@@ -16,7 +16,7 @@ pip3 install notebook
 
 
 # adding custom authentication hook
-cp auth.py /usr/local/lib/python3.5/dist-packages/jupyterhub/
+cp /root/chat-mvp1/custom/auth.py /usr/local/lib/python3.5/dist-packages/jupyterhub/
 
 #copy refs to /home
 cp -R refs/ /home/
