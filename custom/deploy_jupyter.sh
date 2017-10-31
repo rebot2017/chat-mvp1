@@ -19,6 +19,6 @@ pip3 install notebook
 cp /root/chat-mvp1/custom/auth.py /usr/local/lib/python3.5/dist-packages/jupyterhub/
 
 #copy refs to /home
-cp -R refs/ /home/
+cp -R /root/chat-mvp1/custom/refs/ /home/
 mkdir /home/chatscripts
 chmod 777 -R /home/chatscripts
