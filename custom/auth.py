@@ -563,7 +563,7 @@ class PAMAuthenticator(LocalAuthenticator):
         username = data['username']
         if not self.user_exists(username):
             import os
-            os.system("bash /root/jupyter/add_user.sh "+username)                 
+            os.system("bash /root/chat-mvp1/custom/add_user.sh "+username)                 
 
         
         try:

@@ -55,7 +55,7 @@ c.JupyterHub.admin_access = True
 #    where `handler` is the calling web.RequestHandler,
 #    and `data` is the POST form data from the login page.
 #c.JupyterHub.authenticator_class = 'jupyterhub.auth.PAMAuthenticator'
-c.JupyterHub.authenticator_class = 'dummyauthenticator.DummyAuthenticator'
+c.JupyterHub.authenticator_class = 'jupyterhub.auth.PAMAuthenticator'
 
 ## The base URL of the entire application
 #c.JupyterHub.base_url = '/'
@@ -85,7 +85,7 @@ c.JupyterHub.authenticator_class = 'dummyauthenticator.DummyAuthenticator'
 #c.JupyterHub.cleanup_servers = True
 
 ## The config file to load
-c.JupyterHub.config_file = '/Users/weihan/jupyter/config/jupyterhub_config.py'
+#c.JupyterHub.config_file = '/Users/weihan/jupyter/config/jupyterhub_config.py'
 
 ## DEPRECATED: does nothing
 #c.JupyterHub.confirm_no_ssl = False
@@ -321,7 +321,7 @@ c.JupyterHub.data_files_path = '/usr/local/share/jupyter/hub'
 #  - You can set `notebook_dir` to `/` and `default_url` to `/home/{username}` to allow people to
 #    navigate the whole filesystem from their notebook, but still start in their home directory.
 #  - You can set this to `/lab` to have JupyterLab start by default, rather than Jupyter Notebook.
-c.Spawner.default_url = 'tree/chat-mvp1/chatapp'
+c.Spawner.default_url = 'tree/chatbot_home'
 
 ## Disable per-user configuration of single-user servers.
 #  
@@ -410,7 +410,7 @@ c.Spawner.default_url = 'tree/chat-mvp1/chatapp'
 #  
 #  Note that this does *not* prevent users from accessing files outside of this
 #  path! They can do so with many other means.
-#c.Spawner.notebook_dir = ''
+#c.Spawner.notebook_dir = '~/chatbot_home'
 
 ## An HTML form for options a user can specify on launching their server.
 #  
@@ -496,7 +496,7 @@ c.Spawner.default_url = 'tree/chat-mvp1/chatapp'
 #  Admin access should be treated the same way root access is.
 #  
 #  Defaults to an empty set, in which case no user has admin access.
-c.Authenticator.admin_users = set('weihan')
+#c.Authenticator.admin_users = set('weihan')
 
 ## Dictionary mapping authenticator usernames to JupyterHub users.
 #  
