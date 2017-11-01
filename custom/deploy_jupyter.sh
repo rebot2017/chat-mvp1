@@ -30,6 +30,9 @@ cp /root/chat-mvp1/custom/login.html /usr/local/share/jupyter/hub/templates/
 #copy refs to /home
 cp -R /root/chat-mvp1/custom/refs/ /home/
 
+#copy jupyhelpers to /home
+cp -R /root/chat-mvp1/custom/jupyhelper/ /home/
+
 #mount chatscript from host server instead
 mkdir /home/chatscripts
 chmod 777 -R /home/chatscripts

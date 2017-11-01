@@ -47,10 +47,8 @@ if($(IPython.toolbar.selector.concat(' > #commit-to-git')).length == 0){
                 commit_cell(
 
 "import sys\n" +
-"from os.path import expanduser\n" +
-
-"if expanduser('~')  not in sys.path:\n" +
-"	sys.path.append(expanduser('~'))\n" +
+"if '/home'  not in sys.path:\n" +
+"	sys.path.append('/home')\n" +
 "from jupyhelper import jupyter_parser\n" + 
 "jp = jupyter_parser.jupyter_helpers()\n" +
 "jp.jupyter_run('{0}', '{1}')\n"
