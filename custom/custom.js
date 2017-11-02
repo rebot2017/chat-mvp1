@@ -49,7 +49,7 @@ if($(IPython.toolbar.selector.concat(' > #commit-to-git')).length == 0){
 "import sys\n" +
 "if '/home'  not in sys.path:\n" +
 "	sys.path.append('/home')\n" +
-"from jupyhelper import jupyter_parser\n" + 
+"from rebot import jupyter_parser\n" + 
 "jp = jupyter_parser.jupyter_helpers()\n" +
 "jp.jupyter_run('{0}', '{1}')\n"
 )
