@@ -22,7 +22,7 @@ pip3 install jupyterhub
 apt-get install -y npm nodejs-legacy
 npm install -g configurable-http-proxy
 pip3 install notebook
-
+pip3 install bs4
 
 # adding custom authentication hook
 cp /root/chat-mvp1/custom/auth.py /usr/local/lib/python3.5/dist-packages/jupyterhub/
