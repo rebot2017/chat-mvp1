@@ -61,3 +61,22 @@ if($(IPython.toolbar.selector.concat(' > #commit-to-git')).length == 0){
 var hidePrompt = function(){$(".input_prompt").hide(); console.log($(".input_prompt")); console.log("hideinput");}
 $(Jupyter.events).one("kernel_ready.Kernel",hidePrompt);
 $(Jupyter.events).one("create.Cell", function(){hidePrompt();});
+
+
+//remove buttons
+var hide_all = function(){
+$("#insert_above_below").hide();
+$("#cut_copy_paste").hide();
+$("#move_up_down").hide();
+$("select#cell_type").hide();
+}
+$("[title='open the command palette']").hide();
+var unhide_all = function(){
+$("#insert_above_below").show();
+$("#cut_copy_paste").show();
+$("#move_up_down").show();
+$("select#cell_type").show();
+$("[title='open the command palette']").show();
+
+}
+hide_all();
