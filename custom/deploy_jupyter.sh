@@ -27,6 +27,9 @@ pip3 install bs4
 # adding custom authentication hook
 cp /root/chat-mvp1/custom/auth.py /usr/local/lib/python3.5/dist-packages/jupyterhub/
 cp /root/chat-mvp1/custom/login.html /usr/local/share/jupyter/hub/templates/
+cp /root/chat-mvp1/custom/login.less /usr/local/share/jupyter/hub/static/
+cp /root/chat-mvp1/custom/maintoolbar.js /usr/local/lib/python3.5/dist-packages/notebook/static/notebook/js/
+
 #copy refs to /home
 #cp -R /root/chat-mvp1/custom/refs/ /home/
 
