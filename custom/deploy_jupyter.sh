@@ -28,18 +28,18 @@ pip3 install notebook
 cp /root/chat-mvp1/custom/auth.py /usr/local/lib/python3.5/dist-packages/jupyterhub/
 cp /root/chat-mvp1/custom/login.html /usr/local/share/jupyter/hub/templates/
 #copy refs to /home
-cp -R /root/chat-mvp1/custom/refs/ /home/
+#cp -R /root/chat-mvp1/custom/refs/ /home/
 
 #copy jupyhelpers to /home
-cp -R /root/chat-mvp1/custom/jupyhelper/ /home/
+#cp -R /root/chat-mvp1/custom/jupyhelper/ /home/
 
 #mount chatscript from host server instead
-mkdir /home/chatscripts
-chmod 777 -R /home/chatscripts
+#mkdir /home/chatscripts
+#chmod 777 -R /home/chatscripts
 
 #setting up NFS on client
 apt install -y nfs-common
 
 
-mount $1:/home/chatscripts /home/chatscripts
+mount $1:/home /home
 chmod 777 -R /home/chatscripts
