@@ -4,7 +4,7 @@ echo "$#"
 #	echo "add IP address of master as arg1"
 #	exit 1
 #fi
-master=128.199.163.187
+master=139.59.231.81
 
 #ping master to get master to allow our ipaddress to connect to NFS
 ipaddr=`hostname -I | awk '{print$1}'`

@@ -10,8 +10,9 @@ npm install -g configurable-http-proxy
 pip3 install notebook
 pip3 install jupyterhub-dummyauthenticator
 pip3 install bs4
-
-
+pip3 install flask
+apt install -y nfs-kernel-server
+systemctl start nfs-kernel-server
 #copy files to appropriate location
 mkdir /home/chatscripts
 chown nobody:nogroup /home/chatscripts
