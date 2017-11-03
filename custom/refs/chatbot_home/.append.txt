@@ -1,12 +1,21 @@
 import argparse
-def call_api(search):
-    search_res = gm_search(search)
-    card1 = {"type":"string", "data":"Search results from Google: "}
-    card2 = {"type":"cards", "data": search_res}
-    return_arr = []
-    return_arr.append(card1)
-    return_arr.append(card2)
-    return return_arr
+import json
+def call_api(params):
+    res = send_to_rebot(params)
+    cards = []
+    if type(res) is str:
+        card = {"type": "string", "data": res}
+        cards.append(card)
+    else:
+        card = {"type":"string", "data":"Results from Yahoo Finance"}
+        cards.append(card)
+        results = ""
+        for item in res:
+            for key, value in item.items():
+                results = results + key +": "+value+"<br />"
+        card = {"type": "string", "data":results}
+        cards.append(card)
+    return json.dumps(cards)
     
 if __name__=="__main__":
     argparser = argparse.ArgumentParser()
