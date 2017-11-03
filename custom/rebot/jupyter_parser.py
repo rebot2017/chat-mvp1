@@ -32,8 +32,8 @@ class jupyter_helpers:
                 lines = f.readlines()
                 for line in lines:
                     evalStr += line
-            username = get_curr_folder()
-            outfile = username+"_"+outfile
+            username = self.get_curr_folder()
+            outfile = "/home/chatscripts/"+username+"_"+outfile
             wfile =  open(outfile, 'w')
             wfile.write(evalStr)
             wfile.close()
