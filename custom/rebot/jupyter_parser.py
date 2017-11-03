@@ -5,11 +5,11 @@ import subprocess
 import os, os.path
 class jupyter_helpers:
     def __init__(self):
-        print("Starting the committing process. Please wait.")
+        print("Sending to Rebot. Please wait.\n.\n.\n.\n.")
 
     def jupyter_run(self, infile, outfile):
         self.jupyter_parse_notebook(infile, outfile)
-        self.jupyter_copy_script(outfile)
+        #self.jupyter_copy_script(outfile)
         #self.jupyter_commit()
     
     def jupyter_parse_notebook(self, infile, outfile):
@@ -32,10 +32,13 @@ class jupyter_helpers:
                 lines = f.readlines()
                 for line in lines:
                     evalStr += line
+            username = get_curr_folder()
+            outfile = username+"_"+outfile
             wfile =  open(outfile, 'w')
             wfile.write(evalStr)
             wfile.close()
             print("file parsed and written to %s."%outfile)
+            print("Done. This message will disappear shortly")
             
     
     def jupyter_copy_script(self, outfile):
