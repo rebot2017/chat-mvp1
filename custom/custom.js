@@ -2,7 +2,7 @@
 if($(IPython.toolbar.selector.concat(' > #kill-run-all')).length == 0){
   IPython.toolbar.add_buttons_group([
         {
-             'label'   : 'run all',
+             'label'   : 'Try Your Code',
              'icon'    : 'fa fa-play',
              'callback': function(){
                  IPython.notebook.kernel.restart();
@@ -39,11 +39,9 @@ $(cell.events).one('finished_execute.CodeCell', function(){setTimeout(function()
 if($(IPython.toolbar.selector.concat(' > #commit-to-git')).length == 0){
   IPython.toolbar.add_buttons_group([
         {
-             'label'   : 'commit',
-             'icon'    : 'fa fa-github',
+             'label'   : 'Send to Rebot',
+             'icon'    : 'fa fa-comments-o',
              'callback': function(){
-		console.log("update3");
-                console.log("update1");
                 commit_cell(
 
 "import sys\n" +
@@ -80,3 +78,5 @@ $("[title='open the command palette']").show();
 
 }
 hide_all();
+$("#kill-run-all>button").addClass("btn-success");
+$("#commit-to-git>button").addClass("btn-success");
