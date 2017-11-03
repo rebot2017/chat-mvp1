@@ -5,9 +5,10 @@ echo "$#"
 #	exit 1
 #fi
 master=139.59.231.81
-
+echo "master ip: $master"
 #ping master to get master to allow our ipaddress to connect to NFS
 ipaddr=`hostname -I | awk '{print$1}'`
+echo "pinging master with ipaddress"
 curl "http://$master:5000/ipaddr/$ipaddr"
 echo $ipaddr
 #update git
@@ -45,5 +46,5 @@ cp -R /root/chat-mvp1/custom/rebot /usr/local/lib/python3.5/dist-packages/
 apt install -y nfs-common
 
 
-mount $1:/home /home
+mount $master:/home /home
 chmod 777 -R /home/chatscripts
