@@ -29,7 +29,7 @@
       {{login_error}}
     </p>
     {% endif %}
-    <label for="username_input">Enter username:</label>
+    <label for="username_input">Enter Game ID:</label>
     <input
       id="username_input"
       type="username"
@@ -70,11 +70,22 @@
 {{super()}}
 
 <script>
-if (window.location.protocol === "http:") {
-  // unhide http warning
-  var warning = document.getElementById('insecure-login-warning');
-  warning.className = warning.className.replace(/\bhidden\b/, '');
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
+$(document).ready(function(){
+	var user = getParameterByName("user");
+	if(user){
+		$("#username_input").val(getParameterByName("user"));
+		$("#login_submit").click();
+	}
+});
 </script>
 
 {% endblock %}

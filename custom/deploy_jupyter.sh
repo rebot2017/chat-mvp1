@@ -1,13 +1,14 @@
 #!/bin/sh
 echo "$#"
-if [ $# !=  1 ]; then
-	echo "add IP address of master as arg1"
-	exit 1
-fi
+#if [ $# !=  1 ]; then
+#	echo "add IP address of master as arg1"
+#	exit 1
+#fi
+master=128.199.163.187
 
 #ping master to get master to allow our ipaddress to connect to NFS
 ipaddr=`hostname -I | awk '{print$1}'`
-curl "http://$1:5000/ipaddr/$ipaddr"
+curl "http://$master:5000/ipaddr/$ipaddr"
 echo $ipaddr
 #update git
   git config --global user.email "keep.it.that.way@gmail.com"
@@ -29,7 +30,7 @@ cp /root/chat-mvp1/custom/auth.py /usr/local/lib/python3.5/dist-packages/jupyter
 cp /root/chat-mvp1/custom/login.html /usr/local/share/jupyter/hub/templates/
 cp /root/chat-mvp1/custom/login.less /usr/local/share/jupyter/hub/static/
 cp /root/chat-mvp1/custom/maintoolbar.js /usr/local/lib/python3.5/dist-packages/notebook/static/notebook/js/
-
+cp -R /root/chat-mvp1/custom/rebot /usr/local/lib/python3.5/dist-packages/
 #copy refs to /home
 #cp -R /root/chat-mvp1/custom/refs/ /home/
 

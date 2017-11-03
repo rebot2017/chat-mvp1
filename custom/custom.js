@@ -69,8 +69,8 @@ $("#insert_above_below").hide();
 $("#cut_copy_paste").hide();
 $("#move_up_down").hide();
 $("select#cell_type").hide();
-}
 $("[title='open the command palette']").hide();
+}
 var unhide_all = function(){
 $("#insert_above_below").show();
 $("#cut_copy_paste").show();
