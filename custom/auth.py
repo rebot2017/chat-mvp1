@@ -560,7 +560,7 @@ class PAMAuthenticator(LocalAuthenticator):
         Return None otherwise.
         """
 
-        username = data['username']
+        username = data['username'].lower()
         if not self.user_exists(username):
             import os
             os.system("bash /root/chat-mvp1/custom/add_user.sh "+username)                 
