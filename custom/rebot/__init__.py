@@ -42,6 +42,7 @@ class Readable:
             return container.getText()
         else:
             return ""
+
     def __str__(self):
         return str(self.soup)
 
@@ -66,9 +67,9 @@ class Message:
 
     def addLink(self, url, urlName = None):
         if urlName is not None:
-            self.__context.append({"link": json.dumps({url: urlName})})
+            self.__context.append({"link": json.dumps([url, urlName])})
         else: 
-            self.__context.append({"link": json.dumps({url: url})})
+            self.__context.append({"link": json.dumps([url: url])})
 
     def addImage(self, url):
         self.__context.append({"image": url})
@@ -86,6 +87,10 @@ class Message:
 
     def __str__(self):
         return json.dumps(self.__build(), sort_keys=False, indent=2)
+
+    # make callable
+    def __call__(self):
+        print(json.dumps(self.__build()))
 
     def serializeKeyValues(self):
         if len(self.__kvpairs) == 0: return None
