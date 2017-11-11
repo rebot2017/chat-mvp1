@@ -42,6 +42,7 @@ class Readable:
             return container.getText()
         else:
             return ""
+
     def __str__(self):
         return str(self.soup)
 
@@ -86,6 +87,10 @@ class Message:
 
     def __str__(self):
         return json.dumps(self.__build(), sort_keys=False, indent=2)
+
+    # make callable
+    def __call__(self):
+        print(json.dumps(self.__build()))
 
     def serializeKeyValues(self):
         if len(self.__kvpairs) == 0: return None
