@@ -69,7 +69,7 @@ class Message:
         if urlName is not None:
             self.__context.append({"link": json.dumps([url, urlName])})
         else: 
-            self.__context.append({"link": json.dumps([url: url])})
+            self.__context.append({"link": json.dumps([url, url])})
 
     def addImage(self, url):
         self.__context.append({"image": url})
