@@ -6,3 +6,6 @@ __pycache__/*
 
 .DS_Store
 .vscode
+jupyterhub.sqlite
+nohup.out
+jupyterhub_cookie_secret
