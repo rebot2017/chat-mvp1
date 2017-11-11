@@ -1,5 +1,6 @@
 import rebot
 import time
+import json
 
 def send_to_rebot(ticker):
 	
@@ -79,12 +80,18 @@ def send_to_rebot(ticker):
 
 	return message
 
+def testcall():
+	message = rebot.createEmptyMessage()
+	message.addText("this is my new message!!")
+	return message
+        
 #------------ 
 
 start = time.time()
 
+#message = send_to_rebot("MSFT")
+message = testcall()
+print(json.loads(str(message)))
 
-message = send_to_rebot("MSFT")
-message()
 
 print("--- %s seconds ---" % (time.time() - start))
