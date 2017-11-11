@@ -1,26 +1,12 @@
 import argparse
-import json
+
 def call_api(params):
-    res = send_to_rebot(params)
-    cards = []
-    if type(res) is str:
-        card = {"type": "string", "data": res}
-        cards.append(card)
-    else:
-        card = {"type":"string", "data":"Results from Yahoo Finance"}
-        cards.append(card)
-        results = ""
-        for item in res:
-            for key, value in item.items():
-                results = results + key +": "+value+"<br />"
-        card = {"type": "string", "data":results}
-        cards.append(card)
-    return json.dumps(cards)
+    return send_to_rebot(params)
     
 if __name__=="__main__":
     argparser = argparse.ArgumentParser()
     argparser.add_argument('search',help = '', type=str, nargs='+')
     args = argparser.parse_args()
     search = " ".join(args.search)
-    print(json.dumps(call_api(search)))
+    print(call_api(search))
     
