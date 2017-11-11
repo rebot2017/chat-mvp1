@@ -1,32 +1,31 @@
 import rebot
 import time
 
-
-
-
 def send_to_rebot(ticker):
 	
 	content = rebot.getContent(ticker)
 	readable = rebot.getHtml(content)
 
-	stockName = readable.search("h1")
-	tickerPrice = readable.search("span", "class", "Trsdu(0.3s) Fw(b) Fz(36px) Mb(-4px) D(ib)")
+	stockName 			= readable.search("h1")
+	tickerPrice 		= readable.search("span", "class", "Trsdu(0.3s) Fw(b) Fz(36px) Mb(-4px) D(ib)")
 	prevTickerPrice = readable.search("span", "class", "C(black) Fz(24px) Fw(b)")
-	previousClose = readable.search("td", "data-test", "PREV_CLOSE-value")
-	openPrice = readable.search("td", "data-test", "OPEN-value")
-	bid = readable.search("td", "data-test", "BID-value")
-	ask = readable.search("td", "data-test", "ASK-value")
-	dayRange = readable.search("td", "data-test", "DAYS_RANGE-value")
-	volume = readable.search("td", "data-test", "TD_VOLUME-value")
-	avgVolume = readable.search("td", "data-test", "AVERAGE_VOLUME_3MONTH-value")
-	marketCap = readable.search("td", "data-test", "MARKET_CAP-value")
-	beta = readable.search("td", "data-test", "BETA-value")
-	peratio = readable.search("td", "data-test", "PE_RATIO-value")
-	eps = readable.search("td", "data-test", "EPS_RATIO-value")
-	earningsdate = readable.search("td", "data-test", "EARNINGS_DATE-value")
-	fwdDividend = readable.search("td", "data-test", "DIVIDEND_AND_YIELD-value")
-	exDividend = readable.search("td", "data-test", "EXDIVIDEND_DATE-value")
-	yearTarget = readable.search("td", "data-test", "ONE_YEAR_TARGET_PRICE-value")
+	previousClose 	= readable.search("td", "data-test", "PREV_CLOSE-value")
+	openPrice 			= readable.search("td", "data-test", "OPEN-value")
+	bid 						= readable.search("td", "data-test", "BID-value")
+	ask 						= readable.search("td", "data-test", "ASK-value")
+	dayRange 				= readable.search("td", "data-test", "DAYS_RANGE-value")
+	volume 					= readable.search("td", "data-test", "TD_VOLUME-value")
+	avgVolume 			= readable.search("td", "data-test", "AVERAGE_VOLUME_3MONTH-value")
+	marketCap 			= readable.search("td", "data-test", "MARKET_CAP-value")
+	beta 						= readable.search("td", "data-test", "BETA-value")
+	peratio 				= readable.search("td", "data-test", "PE_RATIO-value")
+	eps 						= readable.search("td", "data-test", "EPS_RATIO-value")
+	earningsdate 		= readable.search("td", "data-test", "EARNINGS_DATE-value")
+	fwdDividend 		= readable.search("td", "data-test", "DIVIDEND_AND_YIELD-value")
+	exDividend 			= readable.search("td", "data-test", "EXDIVIDEND_DATE-value")
+	yearTarget 			= readable.search("td", "data-test", "ONE_YEAR_TARGET_PRICE-value")
+
+	latestNews 			= readable.search("a", "class", "Fw(b) Fz(20px) Lh(23px) LineClamp(2,46px) Fz(17px)--sm1024 Lh(19px)--sm1024 LineClamp(2,38px)--sm1024 Td(n) C(#0078ff):h C(#000)")
 
 	# stockName = readable.find("h1").getText()
 	# tickerPrice = readable.find("span", { "class" : "Trsdu(0.3s) Fw(b) Fz(36px) Mb(-4px) D(ib)" }).getText()
@@ -47,9 +46,18 @@ def send_to_rebot(ticker):
 	# exDividend = readable.find("td", {"data-test": "EXDIVIDEND_DATE-value"}).getText()
 	# yearTarget = readable.find("td", {"data-test": "ONE_YEAR_TARGET_PRICE-value"}).getText()
 
+	if float(beta) > 1.5:
+		action = "OMG! TOO RISKY"
+	else:
+		action = "MODERATE RISK"
+
 	message = rebot.createEmptyMessage()
 	message.addText("Here are the results from Yahoo Finance!")
-	
+	message.addText(action)
+	message.addLink("https://finance.yahoo.com", "Click this link")
+	message.addImage("https://urlimage")
+	message.addText(latestNews)
+
 	message.addData("Stock Name", stockName)
 	message.addData("Ticker Price", tickerPrice)
 	message.addData("Previous Ticker Price", prevTickerPrice)
@@ -69,26 +77,12 @@ def send_to_rebot(ticker):
 	message.addData("Ex Dividend", exDividend)
 	message.addData("1st Year Target", yearTarget)
 
-	print(message)
-
-def send_to_rebot2(ticker):
-	message = rebot.createEmptyMessage()
-	message.addText("hello")
-	message.addImage("http://urlimage")
-	message.addLink("http://url", "this link")
-	#message.addData("kaey1", "value1")
-	#message.addData("kaey2", "value2")
 	return message
-	
 
-def send_to_rebot3(ticker):
-	message = rebot.createEmptyMessage()
-	message.addText("mamaa")
-
-	return message
+#------------ 
 
 start = time.time()
 
-print(send_to_rebot("GOOG"))
+print(send_to_rebot("MSFT"))
 
 print("--- %s seconds ---" % (time.time() - start))

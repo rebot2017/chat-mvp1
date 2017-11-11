@@ -20,6 +20,13 @@ def getSoup(content):
 def createEmptyMessage():
     return Message()
 
+def pp_json(json_thing, sort=True, indents=4):
+    if type(json_thing) is str:
+        print(json.dumps(json.loads(json_thing), sort_keys=sort, indent=indents))
+    else:
+        print(json.dumps(json_thing, sort_keys=sort, indent=indents))
+    return None
+
 class Readable: 
     def __init__(self, soup = None):
         self.soup = soup
@@ -43,6 +50,14 @@ class Message:
         self.__context = []
         self.__kvpairs = []
 
+    @property
+    def data(self):
+        return json.dumps(self.__kvpairs, sort_keys=False, indent=2)
+    
+    @property
+    def info(self):
+        return json.dumps(self.__context, sort_keys=False, indent=2)
+
     def addData(self, key, value):
         self.__kvpairs.append({key: value})
 
@@ -58,7 +73,7 @@ class Message:
     def addImage(self, url):
         self.__context.append({"image": url})
 
-    def __str__(self):
+    def __build(self):
         roots = []
         for item in self.__context:
             for key, value in item.items():
@@ -67,8 +82,10 @@ class Message:
         kvdata = self.serializeKeyValues()
         if kvdata is not None:
             roots.append({"type": "kvpair", "data": kvdata})
+        return roots
 
-        return json.dumps(roots)
+    def __str__(self):
+        return json.dumps(self.__build(), sort_keys=False, indent=2)
 
     def serializeKeyValues(self):
         if len(self.__kvpairs) == 0: return None
