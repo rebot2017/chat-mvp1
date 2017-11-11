@@ -83,6 +83,8 @@ def send_to_rebot(ticker):
 
 start = time.time()
 
-print(send_to_rebot("MSFT"))
+
+message = send_to_rebot("MSFT")
+message()
 
 print("--- %s seconds ---" % (time.time() - start))
