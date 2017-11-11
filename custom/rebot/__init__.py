@@ -14,17 +14,14 @@ def getContent(ticker):
 def getHtml(content):
     return Readable(BeautifulSoup(content, 'html.parser'))
 
-
 def getSoup(content):
     return BeautifulSoup(content, 'html.parser')
-
 
 def createEmptyMessage():
     return Message()
 
 class Readable: 
-    soup = None
-    def __init__(self, soup):
+    def __init__(self, soup = None):
         self.soup = soup
 
     def search(self, tag, attribute = None, attributeValue = None):
@@ -38,32 +35,32 @@ class Readable:
             return container.getText()
         else:
             return ""
-
     def __str__(self):
         return str(self.soup)
 
-class Message: 
-    context = []
-    kvpairs = []
+class Message:
+    def __init__(self):
+        self.__context = []
+        self.__kvpairs = []
 
     def addData(self, key, value):
-        self.kvpairs.append({key: value})
+        self.__kvpairs.append({key: value})
 
     def addText(self, text):
-        self.context.append({"string": str(text)})
+        self.__context.append({"string": str(text)})
 
     def addLink(self, url, urlName = None):
         if urlName is not None:
-            self.context.append({"link": json.dumps({url: urlName})})
+            self.__context.append({"link": json.dumps({url: urlName})})
         else: 
-            self.context.append({"link": json.dumps({url: url})})
+            self.__context.append({"link": json.dumps({url: url})})
 
     def addImage(self, url):
-        self.context.append({"image": url})
+        self.__context.append({"image": url})
 
     def __str__(self):
         roots = []
-        for item in self.context:
+        for item in self.__context:
             for key, value in item.items():
                 roots.append({"type": key, "data": value})
 
@@ -74,11 +71,12 @@ class Message:
         return json.dumps(roots)
 
     def serializeKeyValues(self):
-        if len(self.kvpairs) == 0: return None
+        if len(self.__kvpairs) == 0: return None
         keys = []
         values = []
-        for item in self.kvpairs:
+        for item in self.__kvpairs:
             for key, value in item.items():
                 keys.append(key)
                 values.append(value)
         return json.dumps([keys, values])
+        

@@ -2,6 +2,8 @@ import rebot
 import time
 
 
+
+
 def send_to_rebot(ticker):
 	
 	content = rebot.getContent(ticker)
@@ -79,10 +81,14 @@ def send_to_rebot2(ticker):
 	return message
 	
 
+def send_to_rebot3(ticker):
+	message = rebot.createEmptyMessage()
+	message.addText("mamaa")
+
+	return message
+
 start = time.time()
 
-#send_to_rebot("AAPL")
-message = send_to_rebot2("AAPL")
-print(str(message))
+print(send_to_rebot("GOOG"))
 
 print("--- %s seconds ---" % (time.time() - start))
