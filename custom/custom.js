@@ -5,9 +5,11 @@ if($(IPython.toolbar.selector.concat(' > #kill-run-all')).length == 0){
              'label'   : 'Try Your Code',
              'icon'    : 'fa fa-play',
              'callback': function(){
-                 IPython.notebook.kernel.restart();
-                 $(IPython.events).one('kernel_ready.Kernel',
-                                       function(){IPython.notebook.execute_all_cells();});
+		  Jupyter.notebook.clear_all_output();
+   		  Jupyter.notebook.execute_all_cells();			
+//                 IPython.notebook.kernel.restart();
+//                 $(IPython.events).one('kernel_ready.Kernel',
+//                                       function(){IPython.notebook.execute_all_cells();});
              }
         }
     ], 'kill-run-all');

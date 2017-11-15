@@ -311,7 +311,7 @@ c.JupyterHub.data_files_path = '/usr/local/share/jupyter/hub'
 #c.Spawner.cpu_limit = None
 
 ## Enable debug-logging of the single-user server
-#c.Spawner.debug = False
+c.Spawner.debug = True
 
 ## The URL the single-user server should start in.
 #  
