@@ -1,4 +1,14 @@
-
+if ($(IPython.toolbar.selector.concat(' > #restart-kernel')).length == 0){
+    IPython.toolbar.add_buttons_group([
+        {   
+            'label'    : 'Restart Notebook',
+            'icon'     : 'fa fa-refresh',
+            'callback' : function() {
+                    Jupyter.notebook.kernel.restart();
+                }
+        } 
+],'restart-kernel');
+}
 if($(IPython.toolbar.selector.concat(' > #kill-run-all')).length == 0){
   IPython.toolbar.add_buttons_group([
         {
@@ -80,5 +90,6 @@ $("[title='open the command palette']").show();
 
 }
 hide_all();
+$("#restart-kernel>button").addClass("btn-danger");
 $("#kill-run-all>button").addClass("btn-success");
 $("#commit-to-git>button").addClass("btn-success");
